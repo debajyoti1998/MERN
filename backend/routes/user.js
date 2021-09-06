@@ -104,7 +104,7 @@ router.post('/login',async(req,res)=>{
             const user= await getUserByemailandPassword({email,password})
             console.log("*******",user)
             const accessToken = createAccessToken(user)
-            res.cookie('jwt',accessToken,{httponly:true,sameSite:'none',secure:false}).send({ success:1 , user: user });
+            res.cookie('jwt',accessToken, { httpOnly: true, sameSite: 'none', secure: true }).send({ success:1 , user: user });
         }
 
     }

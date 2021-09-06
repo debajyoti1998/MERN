@@ -1,0 +1,21 @@
+sudo apt-get update -y
+
+sudo apt-get install wget libnss3-tools
+
+wget https://github.com/FiloSottile/mkcert/releases/download/v1.4.3/mkcert-v1.4.3-linux-amd64
+
+sudo mv mkcert-v1.4.3-linux-amd64 /usr/bin/mkcert
+
+sudo chmod +x /usr/bin/mkcert
+
+mkcert --version
+
+
+react or node project :
+
+mkdir cert
+cd cert
+mkcert -cert-file cert.pem -key-file key.pem  localhost
+mkcert -install
+
+"https":  "HTTPS=true SSL_CRT_FILE=./cert/cert.pem SSL_KEY_FILE=./cert/key.pem react-scripts start"

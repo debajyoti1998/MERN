@@ -28,11 +28,12 @@ function Login() {
   const LoginUser = async (e) => {
     e.preventDefault();
     if (email && password) {
-      const res = await fetch("http://localhost:8000/user/login", {
+      const res = await fetch("https://localhost:8000/user/login", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
+        credentials: 'include',
         body: JSON.stringify({
           email,
           password,
