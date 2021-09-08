@@ -43,7 +43,7 @@ function SignUp() {
     const Postdata = async (e)=>{
         e.preventDefault();
         const {name,email,password} = user;
-        const res = await fetch("http://localhost:8000/user",{
+        const res = await fetch("https://localhost:8000/user/signup",{
             method: "POST",
             headers:{
                "Content-Type":"application/json"

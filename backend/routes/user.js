@@ -8,6 +8,7 @@ router.get('/', async(req,res) => {
     try{
         const alluser  = await getAllUser()
         res.send({ success:1 , users: alluser });
+        res.end('Success')
     }
     catch(err){
         res.status(400).send({"success" : 0,"error" : err.message });  

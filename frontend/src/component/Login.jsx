@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
+import loginApiCall from '../actions/postaction';
+import { useDispatch } from 'react-redux'
 
 const Div = styled.div``;
 
@@ -23,35 +25,40 @@ function Login() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch=useDispatch()
 
-
+  const data={
+    email,password
+  }
   const LoginUser = async (e) => {
     e.preventDefault();
-    if (email && password) {
-      const res = await fetch("https://localhost:8000/user/login", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-      const data = await res.json();
+    dispatch(loginApiCall(data,history))
+
+    // if (email && password) {
+    //   const res = await fetch("https://localhost:8000/user/login", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-type": "application/json",
+    //     },
+    //     credentials: 'include',
+    //     body: JSON.stringify({
+    //       email,
+    //       password,
+    //     }),
+    //   });
+    //   const data = await res.json();
       
-      if (!data || data.status === 400 || data.error ){
-        console.log("invalid cradential or server error");
-      }
-      else {
-        console.log("login success");
-        history.push("/");
-      }
-    }
-    else{
-      console.log("user and pass req");
-    }
+    //   if (!data || data.status === 400 || data.error ){
+    //     console.log("invalid cradential or server error");
+    //   }
+    //   else {
+    //     console.log("login success");
+    //     history.push("/");
+    //   }
+    // }
+    // else{
+    //   console.log("user and pass req");
+    // }
   };
 
   return (
