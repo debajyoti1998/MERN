@@ -3,7 +3,7 @@ content-type: application/json
 
 {
     "name": "panda",
-    "email": "debajyoti12@gmail.com",
+    "email": "debajyoti112@gmail.com",
     "password": "12345"
 }
 ###
@@ -16,6 +16,14 @@ content-type: application/json
 }
 
 ###
-POST http://localhost:8000/user HTTP/1.1
+POST https://localhost:8000/product HTTP/1.1
 content-type: application/json
+
+{
+    "name":"pro1",
+    "purches_price":200,
+    "selling_price":250
+
+
+}
 

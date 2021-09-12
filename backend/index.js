@@ -1,4 +1,7 @@
 require("dotenv").config();
+
+// import {JWTmiddleware} from './helper/jwt`'
+// const JWTmiddleware=require("./helper/jwt")
 // const User=require("./models/Product")
 const cors = require('cors')
 
@@ -37,6 +40,7 @@ app.get('/', async function(req,res){
     res.send({status:"hellow world"})
 });
 app.use('/user',require('./routes/user'))
+app.use('/product',require('./routes/product'))
 
 
 

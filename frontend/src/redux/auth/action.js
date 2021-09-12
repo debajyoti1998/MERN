@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import config from "../../config";
 
 
 export function apicallStart1(){
@@ -11,12 +11,15 @@ export function apicallError1(){
 export function apicallResult1(data){
     return {type: "UPDATE_USER", payload :data}
 }
+
+
+
 export function loginApiCall(data,history){   // data = {email : dff, password: lmmkk}
     return async (dispatch) => {
         try{
             // loading
             dispatch(apicallStart1());
-            const res = await axios.post(`https://localhost:8000/user/login`, data,
+            const res = await axios.post(`${config.BACKENDURL}/user/login`, data,
                 {withCredentials: true})
             console.log(res)
             if (res.status === 200 && res.data.success===1){
@@ -37,5 +40,35 @@ export function loginApiCall(data,history){   // data = {email : dff, password: 
         
     }
 }
-export default loginApiCall
+
+
+export function signupapi(data,history){   // data = {email : dff, password: lmmkk}
+    return async (dispatch) => {
+        try{
+            // loading
+            dispatch(apicallStart1());
+            const res = await axios.post('https://localhost:8000/user/signup', data,
+                {withCredentials: true})
+            console.log(res)
+            if (res.status === 200 && res.data.success===1){
+                console.log("calling")
+                dispatch(apicallResult1(res.data.user))
+                history.push("/home")
+            }
+            else{
+                dispatch(apicallError1());
+            }
+        }
+        catch(err){
+            console.log(err)
+            dispatch(apicallError1());
+        }
+        
+        
+        
+    }
+}
+
+
+
 

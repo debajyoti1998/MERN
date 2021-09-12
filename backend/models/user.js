@@ -56,10 +56,10 @@ async function create_user(userData){
 // }
 
 
-async function getAllUser(){
-    const userData = await  User.find({},'-password -__v -date',).exec()
-    return userData
-}
+// async function getAllUser(){
+//     const userData = await  User.find({},'-password -__v -date',).exec()
+//     return userData
+// }
 
 
 
@@ -99,4 +99,4 @@ async function getUserByemailandPassword({email,password}){
 //     return usrobj.save()
 // }
 
-module.exports={create_user,getUserByemailandPassword,getAllUser,User};
+module.exports={create_user,getUserByemailandPassword,User};

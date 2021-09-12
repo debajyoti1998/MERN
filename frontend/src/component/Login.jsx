@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
-import loginApiCall from '../actions/postaction';
-import { useDispatch } from 'react-redux'
+import {loginApiCall} from '../redux/auth/action';
+import { useDispatch ,useSelector } from 'react-redux'
 
 const Div = styled.div``;
 
@@ -33,35 +33,9 @@ function Login() {
   const LoginUser = async (e) => {
     e.preventDefault();
     dispatch(loginApiCall(data,history))
-
-    // if (email && password) {
-    //   const res = await fetch("https://localhost:8000/user/login", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-type": "application/json",
-    //     },
-    //     credentials: 'include',
-    //     body: JSON.stringify({
-    //       email,
-    //       password,
-    //     }),
-    //   });
-    //   const data = await res.json();
-      
-    //   if (!data || data.status === 400 || data.error ){
-    //     console.log("invalid cradential or server error");
-    //   }
-    //   else {
-    //     console.log("login success");
-    //     history.push("/");
-    //   }
-    // }
-    // else{
-    //   console.log("user and pass req");
-    // }
   };
-
-  return (
+  const authStatus = useSelector((store) => store.auth)
+  return (   
     <Div>
       <Form method="POST">
         <H1> log in</H1>
@@ -89,6 +63,10 @@ function Login() {
         <Button variant="contained" onClick={LoginUser}>
           Signin
         </Button>
+
+        {authStatus && authStatus.loading ? 'Processing ...' : ''}
+        {authStatus && authStatus.error ? 'Login Error , Please try after some time ...' : ''}
+
       </Form>
     </Div>
   );

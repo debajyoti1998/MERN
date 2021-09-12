@@ -1,6 +1,6 @@
 
 const router=require("express").Router();
-const {getUserByemailandPassword,create_user}=require("../models/Product")
+const {getUserByemailandPassword,create_user}=require("../models/user")
 const {validationData,validateLoginUser}=require("./validation")
 const {createAccessToken}=require("../helper/jwt")
 

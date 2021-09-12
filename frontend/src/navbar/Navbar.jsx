@@ -42,9 +42,9 @@ function Navbar() {
         <ListIcon style={{ fontSize: 40 }} />
       </IconMenu>
       <NavBar>
-        {/* <LinkMenu>About Us</LinkMenu>
+        <LinkMenu to="/product">Add Product</LinkMenu>
         <LinkMenu>Contact Us</LinkMenu>
-        <LinkMenu>Product</LinkMenu> */}
+        <LinkMenu>Product</LinkMenu>
         <Link to="/ragistation"><Button variant="contained" color="primary" style={{marginRight: '20px'}}>
           SignUp
         </Button></Link>

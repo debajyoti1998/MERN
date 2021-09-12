@@ -1,9 +1,12 @@
 import React from 'react'
+import { useSelector} from 'react-redux'
 
 function Home() {
+    const user = useSelector((store) => store.auth.user)
+    
     return (
         <div>
-            <h1>hello home page</h1>
+            welcome {user&& user.name ? user.name  : 'guest'}
         </div>
     )
 }

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import {useHistory} from 'react-router-dom';
+import signupapi from '../redux/auth/action';
+import { useDispatch } from 'react-redux';
 
 const From=styled.form`
     display: flex;
@@ -32,6 +34,7 @@ function SignUp() {
     const[user,setUser]=useState({
         name:"",email:"",password:""
     });
+    const dispatch = useDispatch()
     let name ,value;
     const hendleinput=(e)=>{
         // console.log(e);
@@ -42,27 +45,28 @@ function SignUp() {
     
     const Postdata = async (e)=>{
         e.preventDefault();
-        const {name,email,password} = user;
-        const res = await fetch("https://localhost:8000/user/signup",{
-            method: "POST",
-            headers:{
-               "Content-Type":"application/json"
-            },
-            credentials: 'include',  
-            body:JSON.stringify({
-                name,email,password
-            })
+        dispatch(signupapi(user,history))
+        // const {name,email,password} = user;
+        // const res = await fetch("https://localhost:8000/user/signup",{
+        //     method: "POST",
+        //     headers:{
+        //        "Content-Type":"application/json"
+        //     },
+        //     credentials: 'include',  
+        //     body:JSON.stringify({
+        //         name,email,password
+        //     })
             
-        });
-        const data = await res.json();
-        console.log("########3",data)
-        if (data.status === 422 || !data){
-            console.log("invalid ragistation")
-        }
-        else{
-            console.log("register succesful");
-            history.push("/");
-        }
+        // });
+        // const data = await res.json();
+        // console.log("########3",data)
+        // if (data.status === 422 || !data){
+        //     console.log("invalid ragistation")
+        // }
+        // else{
+        //     console.log("register succesful");
+    //         history.push("/");
+    //     }
     }
 
 
