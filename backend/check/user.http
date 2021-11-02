@@ -3,7 +3,7 @@ content-type: application/json
 
 {
     "name": "panda",
-    "email": "debajyoti112@gmail.com",
+    "email": "debajyoto99@gmail.com",
     "password": "12345"
 }
 ###
@@ -11,19 +11,28 @@ POST https://localhost:8000/user/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "dpppp@gmail.com",
+    "email": "debajyoto99@gmail.com",
     "password": "12345"
 }
 
 ###
-POST https://localhost:8000/product HTTP/1.1
+POST https://localhost:8000/product/add HTTP/1.1
 content-type: application/json
 
 {
-    "name":"pro1",
+    "name":"pro3",
     "purches_price":200,
     "selling_price":250
 
 
 }
 
+###
+GET https://localhost:8000/product/ HTTP/1.1
+content-type: application/json
+
+###
+
+
+DELETE https://localhost:8000/product/61497c5852a0e4130d1506f1 HTTP/1.1
+content-type: application/json
