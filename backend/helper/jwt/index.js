@@ -16,6 +16,7 @@ function createAccessToken(data){
 function verifyToken(token){
     try {
         const JwtData = jwt.verify(token, process.env.JWT_SECRET); 
+        // console.log("jwt token....",JwtData.data)
         return JwtData.data;   
     } catch(err) {
         throw new Error('JWT not valid');
@@ -26,6 +27,7 @@ function verifyToken(token){
 function JWTmiddleware(req, res, next) {
     try{
         const token = (req.cookies && req.cookies.jwt) ? req.cookies.jwt : null ;
+        console.log(token)
         if(token){
             const userdata = verifyToken(token)
             // res.locals :: share value between 2 middleware

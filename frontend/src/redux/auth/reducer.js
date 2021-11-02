@@ -5,13 +5,13 @@ const mycall = {
   error : false
 };
 function apicallReducer(state = mycall, action) {
-  if (action.type === "LOADING") {
+  if (action.type === "USER_LOADING") {
     return {
       loading : true,
       user : null,
       error : false
     };
-  } else if(action.type === "ERROR"){
+  } else if(action.type === "USER_ERROR"){
     return {
       loading : false,
       user : null,
@@ -25,13 +25,17 @@ function apicallReducer(state = mycall, action) {
       error : false
     };
   }
-  else{
+  else if (action.type=== "USER_LOGOUT"){
     return {
       loading : false,
       user : null,
       error : false
     };
   }
+  else{
+    return {...state}
+  }
+  
 }
 
 

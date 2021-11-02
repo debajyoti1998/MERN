@@ -3,13 +3,16 @@ import config from "../../config";
 
 
 export function apicallStart1(){
-    return {type: "LOADING"}
+    return {type: "USER_LOADING"}
 }
 export function apicallError1(){
-    return {type: "ERROR"}
+    return {type: "USER_ERROR"}
 }
 export function apicallResult1(data){
     return {type: "UPDATE_USER", payload :data}
+}
+export function logout(){
+    return {type: "USER_LOGOUT"}
 }
 
 
